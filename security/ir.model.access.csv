@@ -1,0 +1,17 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_gest_candidat,gest.candidat,model_gest_candidat,base.group_user,1,1,1,1
+
+access_gest_session,gest.session,model_gest_session,base.group_user,1,1,1,1
+
+
+access_gest_formateur,gest.formateur,model_gest_formateur,base.group_user,1,1,1,1
+
+
+access_gest_salle,gest.salle,model_gest_salle,base.group_user,1,1,1,1
+
+access_gest_formation,gest.formation,model_gest_formation,base.group_user,1,1,1,1
+
+
+
+

@@ -1,0 +1,71 @@
+<odoo>
+    <data>
+        <record id="candidat_kanban" model="ir.ui.view">
+            <field name="name">candidat.kanban</field>
+            <field name="model">gest.candidat</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="oe_resource_details">
+                                    <ul>
+                                        <li><field name="id"/></li>
+                                        <li><field name="name"/></li>
+                                        <li><field name="email"/></li>
+                                    </ul>
+                                    <div class="oe_kanban_bottom_left">
+                                        <button type="object" name="action_view_formations" class="btn btn-primary">Voir les formations</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="action_candidat_formation" model="ir.actions.act_window">
+            <field name="name">Formations du Candidat</field>
+            <field name="res_model">gest.formation</field>
+            <field name="view_mode">kanban</field>
+            <field name="domain">[]</field>
+        </record>
+
+        <record id="action_formations_sessions" model="ir.actions.act_window">
+            <field name="name">Sessions de la Formation</field>
+            <field name="res_model">gest.session</field>
+            <field name="view_mode">tree</field>
+            <field name="domain">[('formation_id', '=', active_id)]</field>
+            <field name="context">{'default_formation_id': active_id}</field>
+        </record>
+        <record id="view_formation_tree" model="ir.ui.view">
+            <field name="name">gest.formation.tree</field>
+            <field name="model">gest.formation</field>
+            <field name="arch" type="xml">
+                <tree string="Formations">
+                    <field name="name"/>
+                    <button name="action_view_sessions" type="object" string="Voir les sessions" class="btn btn-primary"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_session_tree" model="ir.ui.view">
+            <field name="name">gest.session.tree</field>
+            <field name="model">gest.session</field>
+            <field name="arch" type="xml">
+                <tree string="Sessions">
+                    <field name="name"/>
+                    <field name="date_debut"/>
+                    <field name="date_fin"/>
+                    <field name="nbre_participants"/>
+                    <button name="action_join_session" type="object" string="Join" class="btn btn-success"/>
+                </tree>
+            </field>
+        </record>
+
+        <menuitem id="header_menu" name="Gestion Formation"/>
+        <menuitem id="menu_gestion_formation" name="Gestion Formation" parent="header_menu"/>
+        <menuitem id="menu_formation" name="Formations" parent="menu_gestion_formation" action="action_candidat_formation"/>
+
+    </data>
+</odoo>
