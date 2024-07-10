@@ -1,0 +1,84 @@
+<odoo>
+    <data>
+        <record id="view_formateur_form" model="ir.ui.view">
+                <field name="name">gest.formateur.form</field>
+                <field name="model">gest.formateur</field>
+                <field name="priority" eval="8" />
+                <field name="arch" type="xml">
+                    <form string="formateur">
+                        <sheet>
+                            <div class="oe_title">
+                                <h1>
+                                    <table>
+                                        <tr>
+                                            <field name="matricule" required="1" placeholder="entrer matricule" />
+                                            <field name="name" placeholder="le nom" />
+                                            <field name="diplome" placeholder="le diplome" />
+                                        </tr>
+                                    </table>
+                                </h1>
+                            </div>
+                        </sheet>
+                    </form>
+                </field>
+        </record>
+
+        <record id="view_formateur_tree" model="ir.ui.view">
+                <field name="name">gest.formateur.tree</field>
+                <field name="model">gest.formateur</field>
+                <field name="priority" eval="8" />
+                <field name="arch" type="xml">
+                    <tree string="formateurs">
+                        <field name="matricule" />
+                        <field name="name" />
+                        <field name="diplome" />
+                    </tree>
+                </field>
+        </record>
+        <record id="formateur_search_view" model="ir.ui.view">
+            <field name="name">formateur.search</field>
+            <field name="model">gest.formateur</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="matricule"/>
+                    <field name="diplome"/>
+                </search>
+            </field>
+        </record>
+        <record id="formateur_view_kanban" model="ir.ui.view">
+                <field name="name">formateur.kanban</field>
+                <field name="model">gest.formateur</field>
+                <field name="arch" type="xml">
+                    <kanban>
+                        <templates>
+                            <t t-name="kanban-box">
+                                <div class="oe_resource_details">
+                                    <ul>
+                                        <li>
+                                            <field name="name"/>
+                                        </li>
+                                        <li>
+                                            <field name="matricule"/>
+                                        </li>
+                                        <li>
+                                            <field name="diplome"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </t>
+                        </templates>
+                    </kanban>
+                </field>
+        </record>
+        <record id="action_view_formateur" model="ir.actions.act_window">
+            <field name="name">Liste des formateurs</field>
+            <field name="res_model">gest.formateur</field>
+            <field name="view_mode">kanban,tree,search,form</field>
+            <field name="target">inline</field>
+        </record>
+
+        <menuitem id="menu_formateur" name="formateurs" parent="menu_gestion_formation" action="action_view_formateur"/>
+
+    </data>
+</odoo>

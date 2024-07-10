@@ -1,0 +1,47 @@
+<odoo>
+    <data>
+        <record id="view_salle_form" model="ir.ui.view">
+    <field name="name">gest.salle.form</field>
+    <field name="model">gest.salle</field>
+    <field name="priority" eval="8" />
+    <field name="arch" type="xml">
+        <form string="salle">
+            <sheet>
+                <div class="oe_title">
+                    <h1>
+                        <field name="name" placeholder="le nom" />
+                    </h1>
+                    <group>
+                        <field name="salleref" placeholder="salle ref" />
+                        <field name="nbre_place" placeholder="le nombre de place" />
+                        <field name="libre" widget="boolean_toggle" placeholder="libre ??" />
+                    </group>
+                </div>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+      <record id="view_salle_tree" model="ir.ui.view">
+                <field name="name">gest.salle.tree</field>
+                <field name="model">gest.salle</field>
+                <field name="arch" type="xml">
+                    <tree string="salles">
+                        <field name="salleref" />
+                        <field name="name" />
+                        <field name="nbre_place" />
+                        <field name="libre" widget="boolean_toggle"/>
+                    </tree>
+                </field>
+        </record>
+        <record id="action_view_salle" model="ir.actions.act_window">
+            <field name="name">Liste des salles</field>
+            <field name="res_model">gest.salle</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">inline</field>
+        </record>
+
+        <menuitem id="menu_salle" name="salles" parent="menu_gestion_formation" action="action_view_salle"/>
+
+    </data>
+</odoo>

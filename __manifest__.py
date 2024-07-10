@@ -11,7 +11,10 @@
     'data': [
         'security/ir.model.access.csv',
         'views/gestion_formation.xml',
-        'views/candidat.xml',
+        'views/gestion_formateur.xml',
+        'views/gestion_session.xml',
+        'views/gestion_salle.xml',
+        'views/gestion_candidat.xml',
     ],
 
     'demo': [
