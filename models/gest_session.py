@@ -71,21 +71,27 @@ class GestSession(models.Model):
                     ('date_fin', '>=', session.date_debut)
                 ])
                 if overlapping_sessions:
-                    raise ValidationError("Le formateur sélectionné n'est pas available pour cette période.")
+                    raise ValidationError("Le formateur "+session.formateur_ids.name+" sélectionné n'est pas available pour cette période.")
 
     @api.constrains('date_debut', 'date_fin', 'candidat_ids')
     def check_candidat_available(self):
         for session in self:
             if session.date_debut and session.date_fin and session.candidat_ids:
-                candidat_ids = session.candidat_ids.ids
-                overlapping_sessions = self.env['gest.session'].search([
-                    ('id', '!=', session.id),
-                    ('candidat_ids', 'in', candidat_ids),
-                    ('date_debut', '<=', session.date_fin),
-                    ('date_fin', '>=', session.date_debut)
-                ])
-                if overlapping_sessions:
-                    raise ValidationError("Le candidat sélectionné n'est pas available pour cette période.")
+                unavailable_candidates = []
+                for candidat in session.candidat_ids:
+                    overlapping_sessions = self.env['gest.session'].search([
+                        ('id', '!=', session.id),
+                        ('candidat_ids', 'in', [candidat.id]),
+                        ('date_debut', '<=', session.date_fin),
+                        ('date_fin', '>=', session.date_debut)
+                    ])
+                    if overlapping_sessions:
+                        unavailable_candidates.append(candidat.name)
+
+                if unavailable_candidates:
+                    raise ValidationError(
+                        "Les candidats suivants ne sont pas disponibles pour cette période: " + ", ".join(
+                            unavailable_candidates))
 
     @api.constrains('candidat_ids')
     def check_nbre_participants(self):

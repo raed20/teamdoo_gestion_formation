@@ -21,7 +21,6 @@
         </form>
     </field>
 </record>
-
       <record id="view_salle_tree" model="ir.ui.view">
                 <field name="name">gest.salle.tree</field>
                 <field name="model">gest.salle</field>
@@ -40,8 +39,6 @@
             <field name="view_mode">tree,form</field>
             <field name="target">inline</field>
         </record>
-
         <menuitem id="menu_salle" name="salles" parent="menu_gestion_formation" action="action_view_salle"/>
-
     </data>
 </odoo>

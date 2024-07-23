@@ -22,7 +22,6 @@
                     </form>
                 </field>
         </record>
-
         <record id="view_formateur_tree" model="ir.ui.view">
                 <field name="name">gest.formateur.tree</field>
                 <field name="model">gest.formateur</field>
@@ -77,8 +76,6 @@
             <field name="view_mode">kanban,tree,search,form</field>
             <field name="target">inline</field>
         </record>
-
         <menuitem id="menu_formateur" name="formateurs" parent="menu_gestion_formation" action="action_view_formateur"/>
-
     </data>
 </odoo>

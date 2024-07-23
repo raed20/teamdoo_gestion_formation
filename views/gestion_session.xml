@@ -137,7 +137,6 @@
             <field name="view_mode">tree,calendar,kanban,search,form</field>
             <field name="target">inline</field>
         </record>
-
         <menuitem id="menu_session" name="sessions" parent="menu_gestion_formation" action="action_view_session"/>
     </data>
 </odoo>

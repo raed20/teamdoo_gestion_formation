@@ -20,7 +20,6 @@
                 </form>
             </field>
         </record>
-
       <record id="view_formation_tree" model="ir.ui.view">
                 <field name="name">gest.formation.tree</field>
                 <field name="model">gest.formation</field>
@@ -32,7 +31,6 @@
                     </tree>
                 </field>
       </record>
-
         <record id="action_view_formation" model="ir.actions.act_window">
             <field name="name">Liste des formations</field>
             <field name="res_model">gest.formation</field>
@@ -56,16 +54,9 @@
                 </tree>
             </field>
         </record>
-
-
-
-
-
         <menuitem id="header_menu" name="gestion formation"/>
             <menuitem id="menu_gestion_formation" name="gestion formation" parent='header_menu'/>
                 <menuitem id="menu_formation" name="formation" parent="menu_gestion_formation"
                 action="action_view_formation"/>
-
-
   </data>
 </odoo>

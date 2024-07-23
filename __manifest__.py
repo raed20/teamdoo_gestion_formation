@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'teamdoo_gestion_formation',
-
-    # Categories can be used to filter modules in modules listing
+   # Categories can be used to filter modules in modules listing
     'version': '17.0.0.1.0',
-
     # any module necessary for this one to work correctly
     'depends': ['base'],
     # always loaded

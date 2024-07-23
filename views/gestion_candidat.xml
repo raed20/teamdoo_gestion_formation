@@ -24,19 +24,12 @@
                 </kanban>
             </field>
         </record>
-
         <record id="action_candidat_formation" model="ir.actions.act_window">
             <field name="name">Formations du Candidat</field>
             <field name="res_model">gest.candidat</field>
             <field name="view_mode">kanban</field>
             <field name="domain">[]</field>
         </record>
-
-
-
-
-
         <menuitem id="menu_candidat" name="candidats" parent="menu_gestion_formation" action="action_candidat_formation"/>
-
     </data>
 </odoo>
